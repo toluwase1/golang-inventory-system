@@ -1,5 +1,5 @@
 module github.com/toluwase1/golang-inventory-system
-
+// +heroku goVersion go1.17
 go 1.17
 
 require (
