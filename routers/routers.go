@@ -11,12 +11,13 @@ func Setup() *gin.Engine {
 	api := &handlers.APIEnv{
 		DB: database.GetDB(),
 	}
+	router := r.Group("/inventories")
 
-	r.GET("", api.GetInventories)
-	r.GET("/:id", api.GetInventory)
-	r.POST("", api.CreateInventory)
-	r.PUT("/:id", api.UpdateInventory)
-	r.DELETE("/:id", api.DeleteInventory)
+	router.GET("/all", api.GetInventories)
+	router.GET("/:id", api.GetInventory)
+	router.POST("/create", api.CreateInventory)
+	router.PUT("/:id", api.UpdateInventory)
+	router.DELETE("/:id", api.DeleteInventory)
 
 	return r
 }
