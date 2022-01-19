@@ -2,6 +2,7 @@ package database
 
 import (
 	"github.com/jinzhu/gorm"
+	_ "github.com/lib/pq"
 	"github.com/toluwase1/golang-inventory-system/models"
 	"log"
 )
@@ -10,18 +11,15 @@ import (
 var DB *gorm.DB
 
 func Setup() {
-	host := "host"
-	port := "port"
-	dbname := "dbname"
-	user := "user"
-	password := "password"
+	//host := "host"
+	//port := "8080"
+	//dbname := "inventory"
+	//user := "postgres"
+	//password := "toluwase"
+	url := "postgres://postgres:toluwase@localhost:5432/inventory?sslmode=disable"
+	//url := "postgres://postgres:toluwase@localhost:5432/inventory?sslmode=verify-full"
 
-	db, err := gorm.Open("postgres",
-		"host="+host+
-			" port="+port+
-			" user="+user+
-			" dbname="+dbname+
-			" sslmode=disable password="+password)
+	db, err := gorm.Open("postgres", url)
 
 	if err != nil {
 		log.Fatal(err)
