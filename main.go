@@ -15,7 +15,7 @@ func main() {
 		PORT = ":8080"
 	}
 	r := routers.Setup()
-	if err := r.Run("127.0.0.1:8080"); err != nil {
+	if err := r.Run(":" + PORT); err != nil {
 		log.Fatal(err)
 	}
 
