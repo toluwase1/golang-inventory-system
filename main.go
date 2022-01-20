@@ -12,7 +12,7 @@ func main() {
 	database.Setup()
 	PORT := fmt.Sprintf(":%s", os.Getenv("PORT"))
 	if PORT == "" {
-		PORT = ":8080"
+		PORT = "8080"
 	}
 	r := routers.Setup()
 	if err := r.Run(":" + PORT); err != nil {
