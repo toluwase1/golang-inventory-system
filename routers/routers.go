@@ -13,6 +13,7 @@ func Setup() *gin.Engine {
 	}
 	router := r.Group("/inventories")
 
+	router.GET("/", api.Welcome)
 	router.GET("/all", api.GetInventories)
 	router.GET("/:id", api.GetInventory)
 	router.POST("/create", api.CreateInventory)

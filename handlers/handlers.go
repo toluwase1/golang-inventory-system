@@ -23,6 +23,11 @@ func (a *APIEnv) GetInventories(c *gin.Context) {
 
 	c.JSON(http.StatusOK, inventories)
 }
+func (a *APIEnv) Welcome(c *gin.Context) {
+	c.JSON(200, gin.H{
+		"message": "Welcome to the API",
+	})
+}
 
 func (a *APIEnv) GetInventory(c *gin.Context) {
 	id := c.Params.ByName("id")
