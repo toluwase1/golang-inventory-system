@@ -11,9 +11,9 @@ func Setup() *gin.Engine {
 	api := &handlers.APIEnv{
 		DB: database.GetDB(),
 	}
+	r.GET("/", api.Welcome)
 	router := r.Group("/inventories")
 
-	router.GET("/", api.Welcome)
 	router.GET("/all", api.GetInventories)
 	router.GET("/:id", api.GetInventory)
 	router.POST("/create", api.CreateInventory)
