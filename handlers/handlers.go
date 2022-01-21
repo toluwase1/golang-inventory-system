@@ -26,12 +26,14 @@ func (a *APIEnv) GetInventories(c *gin.Context) {
 func (a *APIEnv) Welcome(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"Welcome Message":     "Welcome to the Shopify Inventory System",
-		"1":                   "Send request on postman",
+		"Instruction":         "Send request on postman",
 		"Get All Inventories": "http://inventory-manager-shopify-task.herokuapp.com/inventories/all",
 		"Get One Inventory":   "http://inventory-manager-shopify-task.herokuapp.com/inventories/:id",
 		"Create Inventory":    "http://inventory-manager-shopify-task.herokuapp.com/inventories/create",
 		"Delete Inventory":    "http://inventory-manager-shopify-task.herokuapp.com/inventories/:id",
 		"Update Inventory":    "http://inventory-manager-shopify-task.herokuapp.com/inventories/:id",
+
+		"MODELS": " Name  string, Description string, Price int, Quantity int ",
 	})
 }
 
