@@ -1,0 +1,233 @@
+basePath: /
+definitions:
+  docs.HTTPError:
+    properties:
+      code:
+        example: 400
+        type: integer
+      message:
+        example: status bad request
+        type: string
+    type: object
+  models.Inventory:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+      quantity:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a  Inventory Management System API for Shopify.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Shopify Inventory Management System API
+  version: "1.0"
+paths:
+  /:
+    get:
+      description: welcome page
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inventory'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+      summary: Welcome page
+      tags:
+      - accounts
+  /inventories/:
+    get:
+      description: get string by ID
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inventory'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+      summary: Show an inventory
+      tags:
+      - accounts
+  /inventories/{id}:
+    get:
+      description: get string by ID
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inventory'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+      summary: Show an inventory
+      tags:
+      - accounts
+    patch:
+      description: Update inventory
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inventory'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+      summary: update an inventory
+      tags:
+      - accounts
+  /inventories/{id}/:
+    delete:
+      description: delete inventory by ID
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inventory'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+      summary: Delete an inventory
+      tags:
+      - accounts
+  /inventories/create/:
+    post:
+      description: create inventory
+      parameters:
+      - description: Inventory ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inventory'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.HTTPError'
+      summary: Create an inventory
+      tags:
+      - accounts
+securityDefinitions:
+  BasicAuth:
+    type: basic
+swagger: "2.0"

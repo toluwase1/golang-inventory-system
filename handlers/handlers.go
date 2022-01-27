@@ -13,6 +13,17 @@ type APIEnv struct {
 	DB *gorm.DB
 }
 
+// ShowInventory godoc
+// @Summary      Show an inventory
+// @Description  get string by ID
+// @Tags         accounts
+// @Produce      json
+// @Param        id   path      int  true  "Inventory ID"
+// @Success      200  {object}  models.Inventory
+// @Failure      400  {object}  docs.HTTPError
+// @Failure      404  {object}  docs.HTTPError
+// @Failure      500  {object}  docs.HTTPError
+// @Router       /inventories/ [get]
 func (a *APIEnv) GetInventories(c *gin.Context) {
 	inventories, err := database.GetInventories(a.DB)
 	if err != nil {
@@ -23,6 +34,18 @@ func (a *APIEnv) GetInventories(c *gin.Context) {
 
 	c.JSON(http.StatusOK, inventories)
 }
+
+// ShowInventory godoc
+// @Summary      Welcome page
+// @Description  welcome page
+// @Tags         accounts
+// @Produce      json
+// @Param        id   path      int  true  "Inventory ID"
+// @Success      200  {object}  models.Inventory
+// @Failure      400  {object}  docs.HTTPError
+// @Failure      404  {object}  docs.HTTPError
+// @Failure      500  {object}  docs.HTTPError
+// @Router       / [get]
 func (a *APIEnv) Welcome(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"Welcome Message":     "Welcome to the Shopify Inventory System",
@@ -37,6 +60,17 @@ func (a *APIEnv) Welcome(c *gin.Context) {
 	})
 }
 
+// ShowInventory godoc
+// @Summary      Show an inventory
+// @Description  get string by ID
+// @Tags         accounts
+// @Produce      json
+// @Param        id   path      int  true  "Inventory ID"
+// @Success      200  {object}  models.Inventory
+// @Failure      400  {object}  docs.HTTPError
+// @Failure      404  {object}  docs.HTTPError
+// @Failure      500  {object}  docs.HTTPError
+// @Router       /inventories/{id} [get]
 func (a *APIEnv) GetInventory(c *gin.Context) {
 	id := c.Params.ByName("id")
 	inv, exists, err := database.GetInventoryByID(id, a.DB)
@@ -54,6 +88,17 @@ func (a *APIEnv) GetInventory(c *gin.Context) {
 	c.JSON(http.StatusOK, inv)
 }
 
+// ShowInventory godoc
+// @Summary      Create an inventory
+// @Description  create inventory
+// @Tags         accounts
+// @Produce      json
+// @Param        id   path      int  true  "Inventory ID"
+// @Success      200  {object}  models.Inventory
+// @Failure      400  {object}  docs.HTTPError
+// @Failure      404  {object}  docs.HTTPError
+// @Failure      500  {object}  docs.HTTPError
+// @Router       /inventories/create/ [post]
 func (a *APIEnv) CreateInventory(c *gin.Context) {
 	inv := models.Inventory{}
 	err := c.BindJSON(&inv)
@@ -71,6 +116,17 @@ func (a *APIEnv) CreateInventory(c *gin.Context) {
 	c.JSON(http.StatusOK, inv)
 }
 
+// ShowInventory godoc
+// @Summary      Delete an inventory
+// @Description  delete inventory by ID
+// @Tags         accounts
+// @Produce      json
+// @Param        id   path      int  true  "Inventory ID"
+// @Success      200  {object}  models.Inventory
+// @Failure      400  {object}  docs.HTTPError
+// @Failure      404  {object}  docs.HTTPError
+// @Failure      500  {object}  docs.HTTPError
+// @Router       /inventories/{id}/ [delete]
 func (a *APIEnv) DeleteInventory(c *gin.Context) {
 	id := c.Params.ByName("id")
 	_, exists, err := database.GetInventoryByID(id, a.DB)
@@ -95,6 +151,17 @@ func (a *APIEnv) DeleteInventory(c *gin.Context) {
 	c.JSON(http.StatusOK, "inventory record deleted successfully")
 }
 
+// ShowInventory godoc
+// @Summary      update an inventory
+// @Description  Update inventory
+// @Tags         accounts
+// @Produce      json
+// @Param        id   path      int  true  "Inventory ID"
+// @Success      200  {object}  models.Inventory
+// @Failure      400  {object}  docs.HTTPError
+// @Failure      404  {object}  docs.HTTPError
+// @Failure      500  {object}  docs.HTTPError
+// @Router       /inventories/{id} [patch]
 func (a *APIEnv) UpdateInventory(c *gin.Context) {
 	id := c.Params.ByName("id")
 	_, exists, err := database.GetInventoryByID(id, a.DB)

@@ -9,3 +9,9 @@ type Inventory struct {
 	Price       int
 	Quantity    int
 }
+
+//type InventoryResponse struct {
+//}
+//
+//type ErrorResponse struct {
+//}
